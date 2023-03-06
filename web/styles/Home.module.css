@@ -3,7 +3,7 @@
   grid-template-columns: auto auto auto auto;
   grid-gap: 10px;
   width: 90%;
-  position:absolute;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -24,4 +24,19 @@
   bottom: 10px;
   position: absolute;
   width: 100%;
+}
+
+.fsvideo {
+  min-width: 100%;
+  min-height: 100%;
+
+  /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+  width: auto;
+  height: auto;
+
+  /* Center the video */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
