@@ -39,7 +39,7 @@ export default function Home() {
           if (i == 0) {
             router.push("https://accounts.rygb.tech");
           } else if (i == 1) {
-            router.push("https://admindash.rygb.tech");
+            router.push("https://points.rygb.tech");
           } else if (i == 2) {
             router.push("https://live.rygb.tech");
           } else if (i == 3) {
