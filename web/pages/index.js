@@ -43,11 +43,11 @@ export default function Home() {
           } else if (i == 2) {
             router.push("https://live.rygb.tech");
           } else if (i == 3) {
-            router.push("https://manager.rygb.tech/dash");
+            router.push("https://manager.rygb.tech/dash?demo=true");
           } else if (i == 4) {
             router.push("https://storyteller.pages.dev/")
           }
-          
+
         }, 1000)
       }
     }, 1000)
@@ -164,6 +164,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div id="main">
+        <h1 className={styles.texttop}>Most sites require an RYGB Account. Click the first channel to create one.</h1>
         <div id="backgroundVideos" className={styles.bggrid}>
 
         </div>
