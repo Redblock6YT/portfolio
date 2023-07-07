@@ -42,8 +42,25 @@
   text-align: center;
 }
 
+.dsbutton>svg {
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 20px;
+  transition: all .4s ease-in
+}
+
+.dsbutton:hover>svg {
+  font-size: 1.2em;
+  transform: translateX(-5px)
+}
+
+.dsbutton:hover {
+  box-shadow: 10px 10px 33px #08080854, -9px -9px 33px #00000046;
+  transform: translateY(-2px)
+}
+
 .dsbutton {
-  height: 45px;
+  height: 50px;
   width: 100%;
   align-items: center;
   justify-content: center;
@@ -78,14 +95,14 @@
 }
 
 .expandedView {
-  display: grid;
+  display: none;
+  filter: "blur(40px)";
   position:absolute;
-  grid-gap: 30px;
+  opacity: 0;
   width: 98%;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  grid-template-columns: 60% auto;
+  grid-template-columns: 55% auto;
 }
 
 .texttop {

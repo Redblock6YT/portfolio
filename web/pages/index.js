@@ -10,9 +10,12 @@ export default function Home() {
   var loading = false;
   const THRESHOLD = 15;
   var confirm = 0;
+  var focusedIndex = null;
 
   function expandedView(i) {
+    if (focusedIndex != null) return;
     confirm = 1;
+    focusedIndex = i;
     const expandedImg = document.getElementById("expandedImg");
     const expandedImgB = document.getElementById("expandedImgB");
     const expandedAbout = document.getElementById("expandedAbout");
@@ -39,20 +42,130 @@ export default function Home() {
     } else if (i == 4) {
       expandedImg.src = "4.png"
       expandedImgB.src = "4.png"
+      expandedAbout.innerHTML = "This was a project for my coach's photography buisiness, but it didn't end up working out."
+      expandedStatus.innerHTML = "Unfinished."
+    }
+    anime({
+      targets: backgroundVideos.children,
+      scale: 0.8,
+      filter: "blur(40px)",
+      easing: "easeInOutQuad",
+      delay: anime.stagger(30),
+      duration: 500,
+    })
+    const expandedView = document.getElementById("expandedView");
+    expandedView.style.display = "grid"
+    anime({
+      targets: expandedView,
+      opacity: 1,
+      filter: "blur(0px)",
+      scale: 1,
+      translateX: "-50%",
+      translateY: "-50%",
+      easing: "easeInOutQuad",
+    })
+  }
+
+  function go() {
+    if (focusedIndex == null) return;
+    if (confirm == 1) {
+      const expandedView = document.getElementById("expandedView");
+      anime({
+        targets: backgroundVideos.children,
+        opacity: 0,
+        scale: 0,
+        easing: "easeInOutQuad",
+        duration: 500,
+        delay: anime.stagger(30),
+      })
+      anime({
+        targets: expandedView,
+        scale: 0.5,
+        filter: "blur(40px)",
+        translateX: "-100%",
+        translateY: "-100%",
+        opacity: 0,
+        easing: "easeInOutQuad",
+        delay: 200,
+      })
+      setTimeout(() => {
+        const video = document.createElement("video");
+        video.src = "rygbtrans.mp4"
+        video.muted = true;
+        video.style.opacity = "0"
+        video.className = styles.fsvideo;
+        console.log("click")
+        document.getElementById("main").appendChild(video);
+        if (focusedIndex != 4 && focusedIndex != 1 && focusedIndex != 2 && confirm == 1) {
+          anime({
+            targets: video,
+            opacity: 1,
+            easing: "easeInOutQuad",
+            duration: 300,
+          })
+        }
+
+        video.play();
+        setTimeout(() => {
+          if (focusedIndex == 0) {
+            router.push("https://accounts.rygb.tech");
+          } else if (focusedIndex == 1) {
+            router.push("https://points.rygb.tech");
+          } else if (focusedIndex == 2) {
+            router.push("https://live.rygb.tech");
+          } else if (focusedIndex == 3) {
+            router.push("https://manager.rygb.tech/dash?demo=true");
+          } else if (focusedIndex == 4) {
+            router.push("https://storyteller.pages.dev/")
+          }
+        }, 500)
+      }, 1000)
+    }
+  }
+
+  function back() {
+    if (confirm == 1) {
+      //goback
+      confirm = 0;
+      focusedIndex = null;
+      const expandedView = document.getElementById("expandedView");
+      anime({
+        targets: backgroundVideos.children,
+        scale: 1,
+        filter: "blur(0px)",
+        easing: "easeInOutQuad",
+        delay: anime.stagger(30),
+      })
+
+      anime({
+        targets: expandedView,
+        opacity: 0,
+        filter: "blur(40px)",
+        scale: 1.5,
+        translateX: "-30%",
+        translateY: "-50%",
+        easing: "easeInOutQuad",
+        complete: () => {
+          expandedView.style.display = "none"
+        }
+      })
     }
   }
 
   function clickEvent(i) {
     console.log("click event")
     const backgroundVideos = document.getElementById("backgroundVideos");
-    anime({
-      targets: backgroundVideos.children,
-      opacity: 0,
-      scale: 0,
-      easing: "easeInOutQuad",
-      duration: 500,
-      delay: anime.stagger(30),
-    })
+    if (focusedIndex != null) return;
+    if (confirm == 1) {
+      anime({
+        targets: backgroundVideos.children,
+        opacity: 0,
+        scale: 0,
+        easing: "easeInOutQuad",
+        duration: 500,
+        delay: anime.stagger(30),
+      })
+    }
     const video = document.createElement("video");
     if (i <= 4 && confirm == 1) {
       video.src = "rygbtrans.mp4"
@@ -108,7 +221,7 @@ export default function Home() {
             }
           }
 
-        }, 1000)
+        }, 500)
       }
     }, 400)
   }
@@ -223,24 +336,28 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div id="main">
+      <div id="main" onClick={() => back()}>
         <div id="backgroundVideos" className={styles.bggrid}>
 
         </div>
         <h1 className={styles.text}>Click a channel to view a website - Marcus Mauricio - 2023</h1>
       </div>
-      <div id="expanded" className={styles.expandedView}>
-        <div style={{marginLeft: "180px"}}>
+      <div id="expandedView" className={styles.expandedView} style={{ transform: "scale(1.5) translateX(-30%) translateY(-50%)" }}>
+        <div style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}>
           <img id="expandedImg" className={styles.expandedImg}></img>
           <img id="expandedImgB" className={styles.expandedImgB}></img>
         </div>
 
-        <div>
+        <div style={{ paddingRight: "100px" }}>
           <h1 className={styles.expandedHeader}>ABOUT</h1>
           <p id="expandedAbout" className={styles.expandedAbout}></p>
           <h1 className={styles.expandedHeader}>STATUS</h1>
           <p id="expandedStatus" className={styles.expandedAbout}></p>
-          <button className={styles.dsbutton}>Go</button>
+          <button className={styles.dsbutton} onClick={() => go()}>Go</button>
         </div>
       </div>
     </>
