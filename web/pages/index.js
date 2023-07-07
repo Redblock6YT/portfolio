@@ -44,6 +44,16 @@ export default function Home() {
       expandedImgB.src = "4.png"
       expandedAbout.innerHTML = "This was a project for my coach's photography buisiness, but it didn't end up working out."
       expandedStatus.innerHTML = "Unfinished."
+    } else if (i == 5) {
+      expandedImg.src = "5.png"
+      expandedImgB.src = "5.png"
+      expandedAbout.innerHTML = "This short documentary was made for a 8th grade school project. It it about the importance of the Holocaust memorial Yad Vashem."
+      expandedStatus.innerHTML = "Done"
+    } else if (i == 6) {
+      expandedImg.src = "6.png"
+      expandedImgB.src = "6.png"
+      expandedAbout.innerHTML = "This is a short documentary made for a National History Day project. It is about the impact of 9/11"
+      expandedStatus.innerHTML = "Done"
     }
     anime({
       targets: backgroundVideos.children,
@@ -117,6 +127,10 @@ export default function Home() {
             router.push("https://manager.rygb.tech/dash?demo=true");
           } else if (focusedIndex == 4) {
             router.push("https://storyteller.pages.dev/")
+          } else if (focusedIndex == 5) {
+            router.push("https://assets.rygb.tech/mainassets/assets/elapbafinal.mp4");
+          } else if (focusedIndex == 6) {
+            router.push("https://assets.rygb.tech/mainassets/assets/nhdprojectfinal.mp4")
           }
         }, 500)
       }, 1000)
@@ -219,6 +233,10 @@ export default function Home() {
             } else {
               expandedView(i);
             }
+          } else if (i == 5) {
+            expandedView(i);
+          } else if (i == 6) {
+            expandedView(6);
           }
 
         }, 500)
@@ -232,7 +250,7 @@ export default function Home() {
     console.log("load")
     const backgroundVideos = document.getElementById("backgroundVideos");
     for (let i = 0; i < 12; i++) {
-      if (i > 4) {
+      if (i > 6) {
         const video = document.createElement("video");
         video.src = "static.mp4"
         video.autoplay = true;
