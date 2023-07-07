@@ -140,15 +140,15 @@ export default function Home() {
         card.addEventListener("mousemove", handleHover);
         card.addEventListener("mouseleave", resetStyles);
       }
-      setTimeout(() => {
-        anime({
-          targets: backgroundVideos.children,
-          opacity: 1,
-          duration: 10000,
-          delay: anime.stagger(50),
-        })
-      }, 1000)
     }
+    setTimeout(() => {
+      anime({
+        targets: backgroundVideos.children,
+        opacity: 1,
+        easing: "easeInOutQuad",
+        delay: anime.stagger(50),
+      })
+    }, 1000)
   }
 
   useEffect(() => {
