@@ -19,41 +19,49 @@ export default function Home() {
     const expandedImg = document.getElementById("expandedImg");
     const expandedImgB = document.getElementById("expandedImgB");
     const expandedAbout = document.getElementById("expandedAbout");
+    const expandedButton = document.getElementById("expandedButton");
     if (i == 0) {
       expandedImg.src = "0.png"
       expandedImgB.src = "0.png"
       expandedAbout.innerHTML = "Meet Accounts, the heart of everything RYGB. It allows you to use RYGB services, interact with other RYGB users and create your own Manager store."
       expandedStatus.innerHTML = "Done (for now)"
+      expandedButton.innerHTML = "Go"
     } else if (i == 1) {
       expandedImg.src = "1.png"
       expandedImgB.src = "1.png"
       expandedAbout.innerHTML = "Could you imagine if you never had to give your phone number to sign up for a store's rewards again? Or not have to download tons of apps to get rewards. Access them all in one place without giving out personal info. Meet Points."
       expandedStatus.innerHTML = "In Development (~4 months)"
+      expandedButton.innerHTML = "Go"
     } else if (i == 2) {
       expandedImg.src = "2.png"
       expandedImgB.src = "2.png"
       expandedAbout.innerHTML = "View all of your Kiosk Security Cameras, and other security cameras in one place. Meet Live."
       expandedStatus.innerHTML = "Needs Rebranding. In Development (~2 months)"
+      expandedButton.innerHTML = "Go"
     } else if (i == 3) {
       expandedImg.src = "3.png"
       expandedImgB.src = "3.png"
       expandedAbout.innerHTML = "Manage your Employees, Products, Points Store, Kiosk and more, all in one place. See helpful Anylitics at a glance and customize your Dashboard to you. Meet Manager."
       expandedStatus.innerHTML = "In Development (~2 Years & going amazing)"
+      expandedButton.innerHTML = "Go"
     } else if (i == 4) {
       expandedImg.src = "4.png"
       expandedImgB.src = "4.png"
       expandedAbout.innerHTML = "This was a project for my coach's photography buisiness, but it didn't end up working out."
       expandedStatus.innerHTML = "Unfinished."
+      expandedButton.innerHTML = "Go"
     } else if (i == 5) {
       expandedImg.src = "5.png"
       expandedImgB.src = "5.png"
-      expandedAbout.innerHTML = "This short documentary was made for a 8th grade school project. It it about the importance of the Holocaust memorial Yad Vashem."
+      expandedAbout.innerHTML = "This short documentary was made for a 8th grade school project. It is about the importance of the Holocaust memorial Yad Vashem."
       expandedStatus.innerHTML = "Done"
+      expandedButton.innerHTML = "Watch"
     } else if (i == 6) {
       expandedImg.src = "6.png"
       expandedImgB.src = "6.png"
       expandedAbout.innerHTML = "This is a short documentary made for a National History Day project. It is about the impact of 9/11"
       expandedStatus.innerHTML = "Done"
+      expandedButton.innerHTML = "Watch"
     }
     anime({
       targets: backgroundVideos.children,
@@ -190,7 +198,7 @@ export default function Home() {
       document.getElementById("main").appendChild(video);
     }
     setTimeout(() => {
-      if (i <= 4) {
+      if (i <= 6) {
         if (i != 4 && i != 1 && i != 2 && confirm == 1) {
           anime({
             targets: video,
@@ -202,43 +210,7 @@ export default function Home() {
 
         video.play();
         setTimeout(() => {
-          if (i == 0) {
-            if (confirm == 1) {
-              router.push("https://accounts.rygb.tech");
-            } else {
-              expandedView(i);
-            }
-
-          } else if (i == 1) {
-            if (confirm == 1) {
-              router.push("https://points.rygb.tech");
-            } else {
-              expandedView(i);
-            }
-          } else if (i == 2) {
-            if (confirm == 1) {
-              router.push("https://live.rygb.tech");
-            } else {
-              expandedView(i);
-            }
-          } else if (i == 3) {
-            if (confirm == 1) {
-              router.push("https://manager.rygb.tech/dash?demo=true");
-            } else {
-              expandedView(i);
-            }
-          } else if (i == 4) {
-            if (confirm == 1) {
-              router.push("https://storyteller.pages.dev/")
-            } else {
-              expandedView(i);
-            }
-          } else if (i == 5) {
-            expandedView(i);
-          } else if (i == 6) {
-            expandedView(6);
-          }
-
+          expandedView(i);
         }, 500)
       }
     }, 400)
@@ -358,7 +330,7 @@ export default function Home() {
         <div id="backgroundVideos" className={styles.bggrid}>
 
         </div>
-        <h1 className={styles.text}>Click a channel to view a website - Marcus Mauricio - 2023</h1>
+        <h1 className={styles.text}>Click a channel to view a project - Marcus Mauricio - 2023</h1>
       </div>
       <div id="expandedView" className={styles.expandedView} style={{ transform: "scale(1.5) translateX(-30%) translateY(-50%)" }}>
         <div style={{
@@ -375,7 +347,7 @@ export default function Home() {
           <p id="expandedAbout" className={styles.expandedAbout}></p>
           <h1 className={styles.expandedHeader}>STATUS</h1>
           <p id="expandedStatus" className={styles.expandedAbout}></p>
-          <button className={styles.dsbutton} onClick={() => go()}>Go</button>
+          <button id="expandedButton" className={styles.dsbutton} onClick={() => go()}>Go</button>
         </div>
       </div>
     </>
