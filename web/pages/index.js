@@ -9,6 +9,38 @@ export default function Home() {
   const router = useRouter();
   var loading = false;
   const THRESHOLD = 15;
+  var confirm = 0;
+
+  function expandedView(i) {
+    confirm = 1;
+    const expandedImg = document.getElementById("expandedImg");
+    const expandedImgB = document.getElementById("expandedImgB");
+    const expandedAbout = document.getElementById("expandedAbout");
+    if (i == 0) {
+      expandedImg.src = "0.png"
+      expandedImgB.src = "0.png"
+      expandedAbout.innerHTML = "Meet Accounts, the heart of everything RYGB. It allows you to use RYGB services, interact with other RYGB users and create your own Manager store."
+      expandedStatus.innerHTML = "Done (for now)"
+    } else if (i == 1) {
+      expandedImg.src = "1.png"
+      expandedImgB.src = "1.png"
+      expandedAbout.innerHTML = "Could you imagine if you never had to give your phone number to sign up for a store's rewards again? Or not have to download tons of apps to get rewards. Access them all in one place without giving out personal info. Meet Points."
+      expandedStatus.innerHTML = "In Development (~4 months)"
+    } else if (i == 2) {
+      expandedImg.src = "2.png"
+      expandedImgB.src = "2.png"
+      expandedAbout.innerHTML = "View all of your Kiosk Security Cameras, and other security cameras in one place. Meet Live."
+      expandedStatus.innerHTML = "Needs Rebranding. In Development (~2 months)"
+    } else if (i == 3) {
+      expandedImg.src = "3.png"
+      expandedImgB.src = "3.png"
+      expandedAbout.innerHTML = "Manage your Employees, Products, Points Store, Kiosk and more, all in one place. See helpful Anylitics at a glance and customize your Dashboard to you. Meet Manager."
+      expandedStatus.innerHTML = "In Development (~2 Years & going amazing)"
+    } else if (i == 4) {
+      expandedImg.src = "4.png"
+      expandedImgB.src = "4.png"
+    }
+  }
 
   function clickEvent(i) {
     console.log("click event")
@@ -16,11 +48,13 @@ export default function Home() {
     anime({
       targets: backgroundVideos.children,
       opacity: 0,
-      duration: 10000,
-      delay: anime.stagger(50),
+      scale: 0,
+      easing: "easeInOutQuad",
+      duration: 500,
+      delay: anime.stagger(30),
     })
     const video = document.createElement("video");
-    if (i <= 4) {
+    if (i <= 4 && confirm == 1) {
       video.src = "rygbtrans.mp4"
       video.muted = true;
       video.style.opacity = "0"
@@ -30,27 +64,53 @@ export default function Home() {
     }
     setTimeout(() => {
       if (i <= 4) {
-        anime({
-          targets: video,
-          opacity: 1,
-        })
+        if (i != 4 && i != 1 && i != 2 && confirm == 1) {
+          anime({
+            targets: video,
+            opacity: 1,
+            easing: "easeInOutQuad",
+            duration: 300,
+          })
+        }
+
         video.play();
         setTimeout(() => {
           if (i == 0) {
-            router.push("https://accounts.rygb.tech");
+            if (confirm == 1) {
+              router.push("https://accounts.rygb.tech");
+            } else {
+              expandedView(i);
+            }
+
           } else if (i == 1) {
-            router.push("https://points.rygb.tech");
+            if (confirm == 1) {
+              router.push("https://points.rygb.tech");
+            } else {
+              expandedView(i);
+            }
           } else if (i == 2) {
-            router.push("https://live.rygb.tech");
+            if (confirm == 1) {
+              router.push("https://live.rygb.tech");
+            } else {
+              expandedView(i);
+            }
           } else if (i == 3) {
-            router.push("https://manager.rygb.tech/dash?demo=true");
+            if (confirm == 1) {
+              router.push("https://manager.rygb.tech/dash?demo=true");
+            } else {
+              expandedView(i);
+            }
           } else if (i == 4) {
-            router.push("https://storyteller.pages.dev/")
+            if (confirm == 1) {
+              router.push("https://storyteller.pages.dev/")
+            } else {
+              expandedView(i);
+            }
           }
 
         }, 1000)
       }
-    }, 1000)
+    }, 400)
   }
 
   function load() {
@@ -164,11 +224,24 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div id="main">
-        <h1 className={styles.texttop}>Most sites require an RYGB Account. Click the first channel to create one.</h1>
         <div id="backgroundVideos" className={styles.bggrid}>
 
         </div>
         <h1 className={styles.text}>Click a channel to view a website - Marcus Mauricio - 2023</h1>
+      </div>
+      <div id="expanded" className={styles.expandedView}>
+        <div style={{marginLeft: "180px"}}>
+          <img id="expandedImg" className={styles.expandedImg}></img>
+          <img id="expandedImgB" className={styles.expandedImgB}></img>
+        </div>
+
+        <div>
+          <h1 className={styles.expandedHeader}>ABOUT</h1>
+          <p id="expandedAbout" className={styles.expandedAbout}></p>
+          <h1 className={styles.expandedHeader}>STATUS</h1>
+          <p id="expandedStatus" className={styles.expandedAbout}></p>
+          <button className={styles.dsbutton}>Go</button>
+        </div>
       </div>
     </>
   )
