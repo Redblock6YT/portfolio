@@ -139,6 +139,10 @@ export default function Home() {
             router.push("https://assets.rygb.tech/mainassets/assets/elapbafinal.mp4");
           } else if (focusedIndex == 6) {
             router.push("https://assets.rygb.tech/mainassets/assets/nhdprojectfinal.mp4")
+          } else if (focusedIndex == 7) {
+            router.push("https://assets.rygb.tech/mainassets/assets/birthday.mp4")
+          } else if (focusedIndex == 8) {
+            router.push("https://assets.rygb.tech/mainassets/assets/rcreview.mp4")
           }
         }, 500)
       }, 1000)
@@ -198,7 +202,7 @@ export default function Home() {
       document.getElementById("main").appendChild(video);
     }
     setTimeout(() => {
-      if (i <= 6) {
+      if (i <= 8) {
         if (i != 4 && i != 1 && i != 2 && confirm == 1) {
           anime({
             targets: video,
@@ -222,7 +226,7 @@ export default function Home() {
     console.log("load")
     const backgroundVideos = document.getElementById("backgroundVideos");
     for (let i = 0; i < 12; i++) {
-      if (i > 6) {
+      if (i > 8) {
         const video = document.createElement("video");
         video.src = "static.mp4"
         video.autoplay = true;
