@@ -62,6 +62,18 @@ export default function Home() {
       expandedAbout.innerHTML = "This is a short documentary made for a National History Day project. It is about the impact of 9/11"
       expandedStatus.innerHTML = "Done"
       expandedButton.innerHTML = "Watch"
+    } else if (i == 7) {
+      expandedImg.src = "7.png"
+      expandedImgB.src = "7png"
+      expandedAbout.innerHTML = "This is a Tik Tok video I created for my birthday named 'recap.'. This video shows a recap of my life so far."
+      expandedStatus.innerHTML = "Done"
+      expandedButton.innerHTML = "Watch"
+    } else if (i == 8) {
+      expandedImg.src = "8.png"
+      expandedImgB.src = "8.png"
+      expandedAbout.innerHTML = "This is a Tik Tok video I created reviewing the popular beloved south chicken finger restaurant Raising Canes."
+      expandedStatus.innerHTML = "Done"
+      expandedButton.innerHTML = "Watch"
     }
     anime({
       targets: backgroundVideos.children,
@@ -140,7 +152,7 @@ export default function Home() {
           } else if (focusedIndex == 6) {
             router.push("https://assets.rygb.tech/mainassets/assets/nhdprojectfinal.mp4")
           } else if (focusedIndex == 7) {
-            router.push("https://assets.rygb.tech/mainassets/assets/birthday.mp4")
+            router.push("https://assets.rygb.tech/mainassets/assets/recap.mp4")
           } else if (focusedIndex == 8) {
             router.push("https://assets.rygb.tech/mainassets/assets/rcreview.mp4")
           }
