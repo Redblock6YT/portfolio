@@ -36,13 +36,13 @@ export default function Home() {
       expandedImg.src = "2.png"
       expandedImgB.src = "2.png"
       expandedAbout.innerHTML = "View all of your Kiosk Security Cameras, and other security cameras in one place. Meet Live."
-      expandedStatus.innerHTML = "Needs Rebranding. In Development (~2 months)"
+      expandedStatus.innerHTML = "Needs Rebranding. In Paused Development (~2 months)"
       expandedButton.innerHTML = "Go"
     } else if (i == 3) {
       expandedImg.src = "3.png"
       expandedImgB.src = "3.png"
       expandedAbout.innerHTML = "Manage your Employees, Products, Points Store, Kiosk and more, all in one place. See helpful Anylitics at a glance and customize your Dashboard to you. Meet Manager."
-      expandedStatus.innerHTML = "In Development (~2 Years & going amazing)"
+      expandedStatus.innerHTML = "In Development (1 Year+ & going amazing)"
       expandedButton.innerHTML = "Go"
     } else if (i == 4) {
       expandedImg.src = "4.png"
@@ -74,9 +74,15 @@ export default function Home() {
       expandedAbout.innerHTML = "This is a Tik Tok video I created reviewing the popular beloved south chicken finger restaurant Raising Canes."
       expandedStatus.innerHTML = "Done"
       expandedButton.innerHTML = "Watch"
+    } else if (i == 9) {
+      expandedImg.src = "9.png"
+      expandedImgB.src = "9.png"
+      expandedAbout.innerHTML = "This is a 1 minute commercial for a school project. We had to create a 'fake' product and make a commercial for it. Kiosk nor Kiosk software are for sale. Elements of the 'Kiosk' (Kiosk Software) is real however, and may be released at a later date. Music by Olivia Rodrigo."
+      expandedStatus.innerHTML = "Done (9/18/23)"
+      expandedButton.innerHTML = "Watch"
     }
     anime({
-      targets: backgroundVideos.children,
+      targets: [backgroundVideos.children, "#chText"],
       scale: 0.8,
       filter: "blur(40px)",
       easing: "easeInOutQuad",
@@ -101,7 +107,7 @@ export default function Home() {
     if (confirm == 1) {
       const expandedView = document.getElementById("expandedView");
       anime({
-        targets: backgroundVideos.children,
+        targets: [backgroundVideos.children, "#chText"],
         opacity: 0,
         scale: 0,
         easing: "easeInOutQuad",
@@ -155,9 +161,11 @@ export default function Home() {
             router.push("https://assets.rygb.tech/mainassets/assets/recap.mp4")
           } else if (focusedIndex == 8) {
             router.push("https://assets.rygb.tech/mainassets/assets/rcreview.mp4")
+          } else if (focusedIndex == 9) {
+            router.push("https://assets.rygb.tech/mainassets/assetso/meetKioskMediaProd-Candidate.mp4");
           }
         }, 500)
-      }, 1000)
+      }, 800)
     }
   }
 
@@ -168,7 +176,7 @@ export default function Home() {
       focusedIndex = null;
       const expandedView = document.getElementById("expandedView");
       anime({
-        targets: backgroundVideos.children,
+        targets: [backgroundVideos.children, "#chText"],
         scale: 1,
         filter: "blur(0px)",
         easing: "easeInOutQuad",
@@ -214,7 +222,7 @@ export default function Home() {
       document.getElementById("main").appendChild(video);
     }
     setTimeout(() => {
-      if (i <= 8) {
+      if (i <= 9) {
         if (i != 4 && i != 1 && i != 2 && confirm == 1) {
           anime({
             targets: video,
@@ -238,7 +246,7 @@ export default function Home() {
     console.log("load")
     const backgroundVideos = document.getElementById("backgroundVideos");
     for (let i = 0; i < 12; i++) {
-      if (i > 8) {
+      if (i > 9) {
         const video = document.createElement("video");
         video.src = "static.mp4"
         video.autoplay = true;
@@ -346,7 +354,7 @@ export default function Home() {
         <div id="backgroundVideos" className={styles.bggrid}>
 
         </div>
-        <h1 className={styles.text}>Click a channel to view a project - Marcus Mauricio - 2023</h1>
+        <h1 className={styles.text} id="chText">Click a channel to view a project | Marcus Mauricio (Updated 9/19/23)</h1>
       </div>
       <div id="expandedView" className={styles.expandedView} style={{ transform: "scale(1.5) translateX(-30%) translateY(-50%)" }}>
         <div style={{
@@ -358,12 +366,13 @@ export default function Home() {
           <img id="expandedImgB" className={styles.expandedImgB}></img>
         </div>
 
-        <div style={{ paddingRight: "100px" }}>
+        <div style={{ paddingRight: "20px" }}>
           <h1 className={styles.expandedHeader}>ABOUT</h1>
           <p id="expandedAbout" className={styles.expandedAbout}></p>
           <h1 className={styles.expandedHeader}>STATUS</h1>
           <p id="expandedStatus" className={styles.expandedAbout}></p>
           <button id="expandedButton" className={styles.dsbutton} onClick={() => go()}>Go</button>
+          <button id="expandedButton" className={styles.dsbutton} onClick={() => back()}>Back</button>
         </div>
       </div>
     </>

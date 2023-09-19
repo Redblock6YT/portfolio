@@ -33,7 +33,7 @@
 .expandedHeader {
   font-family: 'Outfit', sans-serif;
   font-weight: 500;
-  font-size: 50px;
+  font-size: 45px;
   text-align: center;
 }
 
@@ -103,6 +103,7 @@
   opacity: 0;
   width: 98%;
   top: 50%;
+  grid-gap: 15px;
   left: 50%;
   grid-template-columns: 55% auto;
 }
@@ -119,8 +120,8 @@
 }
 
 .fsvideo {
-  min-width: 100%;
-  min-height: 100%;
+  min-width: 100%; 
+  min-height: 100%; 
 
   /* Setting width & height to auto prevents the browser from stretching or squishing the video */
   width: auto;
@@ -130,5 +131,5 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%,-50%);
 }
