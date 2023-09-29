@@ -41,7 +41,7 @@ export default function Home() {
     } else if (i == 3) {
       expandedImg.src = "3.png"
       expandedImgB.src = "3.png"
-      expandedAbout.innerHTML = "Manage your Employees, Products, Points Store, Kiosk and more, all in one place. See helpful Anylitics at a glance and customize your Dashboard to you. Meet Manager."
+      expandedAbout.innerHTML = "Manage your Employees, Products, Points Store, Kiosk and more, all in one place. See helpful Analyitics at a glance and customize your Dashboard to you. Meet Manager."
       expandedStatus.innerHTML = "In Development (1 Year+ & going amazing)"
       expandedButton.innerHTML = "Go"
     } else if (i == 4) {
@@ -77,8 +77,8 @@ export default function Home() {
     } else if (i == 9) {
       expandedImg.src = "9.png"
       expandedImgB.src = "9.png"
-      expandedAbout.innerHTML = "This is a 1 minute commercial for a school project. We had to create a 'fake' product and make a commercial for it. Kiosk nor Kiosk software are for sale. Elements of the 'Kiosk' (Kiosk Software) is real however, and may be released at a later date. Music by Olivia Rodrigo."
-      expandedStatus.innerHTML = "Done (9/18/23)"
+      expandedAbout.innerHTML = "This is a 1 minute commercial for a school project. We had to create a 'fake' product and make a commercial for it. Kiosk nor Kiosk software are for sale. Elements of the 'Kiosk' (Kiosk Software; displayed in the video) are real however, and may be released at a later date. Music by Olivia Rodrigo."
+      expandedStatus.innerHTML = "Done (9/27/23)"
       expandedButton.innerHTML = "Watch"
     }
     anime({
@@ -162,7 +162,7 @@ export default function Home() {
           } else if (focusedIndex == 8) {
             router.push("https://assets.rygb.tech/mainassets/assets/rcreview.mp4")
           } else if (focusedIndex == 9) {
-            router.push("https://assets.rygb.tech/mainassets/assetso/meetKioskMediaProd-Candidate.mp4");
+            router.push("https://assets.rygb.tech/mainassets/assetso/meetKioskMediaProd-Final.mp4");
           }
         }, 500)
       }, 800)
@@ -354,7 +354,7 @@ export default function Home() {
         <div id="backgroundVideos" className={styles.bggrid}>
 
         </div>
-        <h1 className={styles.text} id="chText">Click a channel to view a project | Marcus Mauricio (Updated 9/19/23)</h1>
+        <h1 className={styles.text} id="chText">Click a channel to view a project | Marcus Mauricio - 410-596-6619 (Updated 9/28/23)</h1>
       </div>
       <div id="expandedView" className={styles.expandedView} style={{ transform: "scale(1.5) translateX(-30%) translateY(-50%)" }}>
         <div style={{
