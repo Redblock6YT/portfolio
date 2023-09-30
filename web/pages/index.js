@@ -78,8 +78,14 @@ export default function Home() {
       expandedImg.src = "9.png"
       expandedImgB.src = "9.png"
       expandedAbout.innerHTML = "This is a 1 minute commercial for a school project. We had to create a 'fake' product and make a commercial for it. Kiosk nor Kiosk software are for sale. Elements of the 'Kiosk' (Kiosk Software; displayed in the video) are real however, and may be released at a later date. Music by Olivia Rodrigo."
-      expandedStatus.innerHTML = "Done (9/27/23)"
+      expandedStatus.innerHTML = "Done (9/28/23)"
       expandedButton.innerHTML = "Watch"
+    } else if (i == 10) {
+      expandedImg.src = "10.png"
+      expandedImgB.src = "10.png"
+      expandedAbout.innerHTML = "This is a website for my dad's buisiness, Brush & Grain. This site also includes a online quote request form, which sends a copy of the quote request (called an Order Export) to the user, and another copy for my dad to view in Manager."
+      expandedStatus.innerHTML = "Done, for now (9/29/23)"
+      expandedButton.innerHTML = "Go"
     }
     anime({
       targets: [backgroundVideos.children, "#chText"],
@@ -163,6 +169,8 @@ export default function Home() {
             router.push("https://assets.rygb.tech/mainassets/assets/rcreview.mp4")
           } else if (focusedIndex == 9) {
             router.push("https://assets.rygb.tech/mainassets/assetso/meetKioskMediaProd-Final.mp4");
+          } else if (focusedIndex == 10) {
+            router.push("https://brushandgrain.com");
           }
         }, 500)
       }, 800)
@@ -222,7 +230,7 @@ export default function Home() {
       document.getElementById("main").appendChild(video);
     }
     setTimeout(() => {
-      if (i <= 9) {
+      if (i <= 10) {
         if (i != 4 && i != 1 && i != 2 && confirm == 1) {
           anime({
             targets: video,
@@ -246,7 +254,7 @@ export default function Home() {
     console.log("load")
     const backgroundVideos = document.getElementById("backgroundVideos");
     for (let i = 0; i < 12; i++) {
-      if (i > 9) {
+      if (i > 10) {
         const video = document.createElement("video");
         video.src = "static.mp4"
         video.autoplay = true;
@@ -354,7 +362,7 @@ export default function Home() {
         <div id="backgroundVideos" className={styles.bggrid}>
 
         </div>
-        <h1 className={styles.text} id="chText">Click a channel to view a project | Marcus Mauricio - 410-596-6619 (Updated 9/28/23)</h1>
+        <h1 className={styles.text} id="chText">Click a channel to view a project | Marcus Mauricio - (410) 596-6619 (Updated 9/29/23)</h1>
       </div>
       <div id="expandedView" className={styles.expandedView} style={{ transform: "scale(1.5) translateX(-30%) translateY(-50%)" }}>
         <div style={{
