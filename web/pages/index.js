@@ -362,7 +362,7 @@ export default function Home() {
         <div id="backgroundVideos" className={styles.bggrid}>
 
         </div>
-        <h1 className={styles.text} id="chText">Click a channel to view a project | Marcus Mauricio - (410) 596-6619 (Updated 9/29/23)</h1>
+        <h1 className={styles.text} id="chText">Marcus Mauricio - (410) 596-6619 (Updated 10/8/23)</h1>
       </div>
       <div id="expandedView" className={styles.expandedView} style={{ transform: "scale(1.5) translateX(-30%) translateY(-50%)" }}>
         <div style={{

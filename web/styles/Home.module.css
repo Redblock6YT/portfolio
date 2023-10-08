@@ -2,13 +2,32 @@
 
 .bggrid {
   display: grid;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto;
   grid-gap: 10px;
   width: 90%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+
+@media (min-width: 600px) {
+  .bggrid {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media (min-width: 900px) {
+  .bggrid {
+    grid-template-columns: auto auto auto;
+  }
+}
+
+@media (min-width: 1000px) {
+  .bggrid {
+    grid-template-columns: auto auto auto auto;
+  }
 }
 
 .video {
